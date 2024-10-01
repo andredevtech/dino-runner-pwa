@@ -26,7 +26,7 @@ function jump() {
 // Evento para detectar a tecla de espaço
 
 document.addEventListener('keydown', function*(event) {
-    if (event.code === 'space') {
+    if (event.code === 'UP') {
         jump();
     }
 });
