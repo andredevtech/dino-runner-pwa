@@ -2,7 +2,8 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: 100vh;
+    align-items: center;
+    height: 100vh;
     background-color: #f7f7f7;
     font-family: sans-serif;
 }
@@ -40,6 +41,7 @@ body {
     top: 10;
     left: 10px;
     font-size: 18px;
+    z-index: 10;
 }
 
 @keyframes moveObstacle {

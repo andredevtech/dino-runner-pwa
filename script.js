@@ -23,20 +23,26 @@ function jump() {
 
 }
 
-document.addEventListener('keydown', function(event) {
+// Evento para detectar a tecla de espaço
+
+document.addEventListener('keydown', function*(event) {
+    if (event.code === 'space') {
+        jump();
+    }
+});
+
+// Função para verificar colisões e atualizar o score
+setInterval(function() {
     let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
     let obstacleRight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('right'));
 
+    // Verificar se há colisão
     if (obstacleRight > 50 && obstacleRight < 90 && dinoBottom <= 30) {
-        alert('Game Over! Your score: ' + socre);
+        alert('Game Over! Your score: ' + score);
         score = 0;
+        scoreDisplay.textContent = 'Score' + score; // Resetar o score na tela        
+    } else {
+        score++;
+        scoreDisplay.textContent = 'Score: ' + score; // Atualiza a pontuação na tela
     }
-
-    score++;
-    scoreDisplay.textContent = 'Score: ' + score;
-}, 100);
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('Service Worker Registered'));
-}
+}, 100); 
